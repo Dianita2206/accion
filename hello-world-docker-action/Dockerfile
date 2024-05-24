@@ -1,18 +1,4 @@
-name: 'Hello World Docker Action'
-description: 'Say hello to a user or the world.'
-inputs:
-  who-to-greet:
-    description: 'Who to greet'
-    required: true
-    default: 'world'
-outputs:
-  time:
-    description: 'The time we said hello.'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+
     FROM alpine:3.10
 
 COPY entrypoint.sh /entrypoint.sh
@@ -20,8 +6,3 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-echo "hello $1"
-
-echo "time=$(date)" >> $GITHUB_OUTPUT
-
- Commit the file (`[skip ci]` to not run a build, yet).
